@@ -13,7 +13,7 @@ These scripts suppose tha:
  Next command should work:
 
 ```bash
-sudo cp inkscape-svgo.inx "$(inkscape -x 2> /dev/null)/inkscape-svgo.inx"
+sudo cp inkscape-svgo.inx "$(inkscape -x 2> /dev/null || echo "$(inkscape --actions="system-data-directory")/extensions")/inkscape-svgo.inx"
 ```
 3. Clone this repository at `simple-icons/utils`. Use next command from
  `simple-icons` directory root:
