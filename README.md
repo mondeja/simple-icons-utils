@@ -15,7 +15,8 @@ These scripts suppose tha:
 ```bash
 sudo cp inkscape-svgo.inx "$(inkscape -x 2> /dev/null)/inkscape-svgo.inx"
 ```
-3. Place this repository as submodule in `simple-icons/utils`. Next command:
+3. Clone this repository at `simple-icons/utils`. Use next command from
+ `simple-icons` directory root:
 ```
 git clone https://github.com/mondeja/simple-icons-review-utils.git utils
 ```

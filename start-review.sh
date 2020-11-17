@@ -22,9 +22,11 @@ USERNAME="$2"
 BRANCH="$3"
 ORIGINAL_ICON_NAME="$4"
 
+SELF_SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 function main() {
-    bash _review/create-review-dir.sh "$DIRNAME" "$ORIGINAL_ICON_NAME" || exit $?
-    bash _review/fetch.sh "$USERNAME" "$BRANCH" || exit $?
+    bash $SELF_SCRIPT_DIR/create-review-dir.sh "$DIRNAME" "$ORIGINAL_ICON_NAME" || exit $?
+    bash $SELF_SCRIPT_DIR/fetch.sh "$USERNAME" "$BRANCH" || exit $?
 }
 
 main
