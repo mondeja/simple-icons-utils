@@ -17,7 +17,7 @@ sudo cp inkscape-svgo.inx "$(inkscape -x 2> /dev/null)/inkscape-svgo.inx"
 ```
 3. Place this repository as submodule in `simple-icons/utils`. Next command:
 ```
-
+git clone https://github.com/mondeja/simple-icons-review-utils.git utils
 ```
 
 ### Start a review for a remote branch
@@ -25,4 +25,3 @@ sudo cp inkscape-svgo.inx "$(inkscape -x 2> /dev/null)/inkscape-svgo.inx"
 ```bash
 bash utils/start-review.sh "<ICON NAME>" "<BRANCH USERNAME OWNER>" "<BRANCH NAME>"
 ```
-
