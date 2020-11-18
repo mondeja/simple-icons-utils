@@ -17,7 +17,6 @@ function computeScaleDifference() {
     PREVIOUS_DIMENSIONS=$(inkscape --query-all "$INPUT_FILEPATH" \
                             | grep path \
                             | cut -d',' -f4-)
-    echo "$PREVIOUS_DIMENSIONS"
     
     PREVIOUS_WIDTH=$(printf "$PREVIOUS_DIMENSIONS" | cut -d',' -f1)
     PREVIOUS_HEIGHT=$(printf "$PREVIOUS_DIMENSIONS" | cut -d',' -f2)
@@ -44,7 +43,6 @@ function scaleAlignIconFile() {
 
 function main() {
     computeScaleDifference
-    echo "$SCALE_DIFF"
     scaleAlignIconFile
 }
 

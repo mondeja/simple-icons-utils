@@ -1,4 +1,4 @@
-## Usage
+# Usage
 
 These scripts suppose tha:
 
@@ -6,23 +6,25 @@ These scripts suppose tha:
 - You have `inkscape` installed.
 - You are in Linux using Bash.
 
-### Install
+## Install
 
-1. Install https://github.com/konsumer/inkscape-svgo
+1. Install https://github.com/juanfran/svgo-inkscape
 2. Replace the default `inkscape-svgo.inx` with the file in this directory.
- Next command should work:
-
-```bash
-sudo cp inkscape-svgo.inx "$(inkscape -x 2> /dev/null || echo "$(inkscape --actions="system-data-directory")/extensions")/inkscape-svgo.inx"
-```
 3. Clone this repository at `simple-icons/utils`. Use next command from
  `simple-icons` directory root:
 ```
 git clone https://github.com/mondeja/simple-icons-review-utils.git utils
 ```
 
+## Scripts
 ### Start a review for a remote branch
 
 ```bash
 bash utils/start-review.sh "<ICON NAME>" "<BRANCH USERNAME OWNER>" "<BRANCH NAME>"
+```
+
+### Scale icon to 24px size and align to center
+
+```bash
+bash utils/inkscape-scale-align-center.sh "<PATH TO ICON>" "<PATH TO OUTPUT>" 
 ```
