@@ -7,13 +7,12 @@ These scripts suppose that:
 
 ## Install
 
-1. Install https://github.com/juanfran/svgo-inkscape
-2. Clone this repository at `simple-icons/utils`. Use next command from
+1. Clone this repository at `simple-icons/utils`. Use next command from
  `simple-icons` directory root:
 ```
 git clone https://github.com/mondeja/simple-icons-review-utils.git utils
 ```
-3. Install SVGO globally with `npm install -g svgo`
+2. Install SVGO globally with `npm install -g svgo`
 
 ## Scripts
 ### Start a review for a remote branch
@@ -62,9 +61,10 @@ This will create the directory `_review/twitter/` and will place the original
 `twitter.svg` icon inside it.
 
 2. You should correct the size and the alignment of the icon. Manually with
-Inkscape is: block width/height scale factor, see what is the maximum axis size
-(width or height), adjust that size to 24px, go to `Object` -> `Align and
-distribute`, and center in both axis. This can be automatized by next command:
+Inkscape the following repetitive tasks are followed: block width/height scale
+factor, see what is the maximum axis size (width or height), adjust that size
+to 24px, go to `Object` -> `Align and distribute`, and center in both axis.
+This can be automatized by next command:
 
 ```bash
 bash utils/inkscape-scale-align-center.sh _review/twitter/original.svg _review/twitter/autofixed.svg
