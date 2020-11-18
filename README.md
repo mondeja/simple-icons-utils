@@ -40,13 +40,13 @@ bash utils/inkscape-gui-compare.sh [-c] "<BLACK ICON PATH>" "<RED ICON PATH>"
 bash utils/inkscape-dimensions.sh "<ICON PATH>"
 ```
 
-## Print differences between icons
+### Print differences between icons
 
 ```bash
 bash utils/diff.sh "<PREVIOUS ICON PATH>" "<NEXT ICON PATH>"
 ```
 
-## Simplest workflow
+## Usual workflow
 
 Supposing that you want to review
 [this pull](https://github.com/simple-icons/simple-icons/pull/3860) (Twitter
