@@ -15,6 +15,17 @@
 BLACK_FILEPATH="$1"
 RED_FILEPATH="$2"
 
+if [ -z "$BLACK_FILEPATH" ]; then
+    printf "You must specify a path to a SVG file compare using the" >&2
+    printf " Inkscape GUI as first argument.\n" >&2
+    exit 1
+fi;
+if [ -z "$RED_FILEPATH" ]; then
+    printf "You must specify a path to a SVG file compare using the" >&2
+    printf " Inkscape GUI as second argument.\n" >&2
+    exit 1
+fi;
+
 CENTER=0
 
 for arg in "$@"; do

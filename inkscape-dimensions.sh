@@ -10,6 +10,12 @@
 
 FILEPATH="$1"
 
+if [ -z "$FILEPATH" ]; then
+    printf "You must specify a path to a SVG file to query their dimensions" >&2
+    printf " as first argument.\n" >&2
+    exit 1
+fi;
+
 function main() {
     inkscape --query-all "$FILEPATH" \
         | grep path \

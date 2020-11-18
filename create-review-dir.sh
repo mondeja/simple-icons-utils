@@ -15,6 +15,11 @@
 DIRNAME="$1"
 ORIGINAL_ICON_NAME="$2"
 
+if [ -z "$DIRNAME" ]; then
+    printf "You must specify a directory name as the first argument.\n" >&2
+    exit 1
+fi;
+
 function createDirectory() {
     if [ ! -d "_review" ]; then
         mkdir _review

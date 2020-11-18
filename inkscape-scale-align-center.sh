@@ -12,6 +12,17 @@
 INPUT_FILEPATH="$1"
 OUTPUT_FILEPATH="$2"
 
+if [ -z "$INPUT_FILEPATH" ]; then
+    printf "You must specify a path to a SVG file for input as first" >&2
+    printf " argument.\n" >&2
+    exit 1
+fi;
+if [ -z "$OUTPUT_FILEPATH" ]; then
+    printf "You must specify a path to a SVG file for output as second" >&2
+    printf " argument.\n" >&2
+    exit 1
+fi;    
+
 SELF_SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 SCALE_DIFF=""
