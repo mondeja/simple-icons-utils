@@ -58,7 +58,7 @@ bash utils/start-review.sh twitter service-paradis twitter-review
 ```
 
 This will create the directory `_review/twitter/` and will place the original
-`twitter.svg` icon inside it.
+`twitter.svg` icon inside it with the name of `original.svg`.
 
 2. You should correct the size and the alignment of the icon. Manually with
 Inkscape the following repetitive tasks are followed: block width/height scale
@@ -76,7 +76,7 @@ A new icon will appear at `_review/twitter/autofixed.svg`.
 using GIT diffs:
 
 ```bash
-bash utils/diff.sh _review/tiktok/autofixed.svg icons/tiktok.svg
+bash utils/diff.sh _review/twitter/autofixed.svg icons/twitter.svg
 ```
 
 4. If the paths does not match with the new version you can review it manually.
