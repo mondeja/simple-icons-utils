@@ -9,12 +9,12 @@ These scripts suppose tha:
 ## Install
 
 1. Install https://github.com/juanfran/svgo-inkscape
-2. Replace the default `inkscape-svgo.inx` with the file in this directory.
-3. Clone this repository at `simple-icons/utils`. Use next command from
+2. Clone this repository at `simple-icons/utils`. Use next command from
  `simple-icons` directory root:
 ```
 git clone https://github.com/mondeja/simple-icons-review-utils.git utils
 ```
+3. Install SVGO globally with `npm install -g svgo`
 
 ## Scripts
 ### Start a review for a remote branch

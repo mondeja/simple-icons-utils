@@ -12,16 +12,18 @@
 INPUT_FILEPATH="$1"
 OUTPUT_FILEPATH="$2"
 
+SELF_SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 SCALE_DIFF=""
 function computeScaleDifference() {
-    PREVIOUS_DIMENSIONS=$(inkscape --query-all "$INPUT_FILEPATH" \
-                            | grep path \
-                            | cut -d',' -f4-)
+    PREVIOUS_DIMENSIONS="$(
+        bash "$SELF_SCRIPT_DIR/inkscape-dimensions.sh" "$INPUT_FILEPATH" \
+        || exit $?)"
     
     PREVIOUS_WIDTH=$(printf "$PREVIOUS_DIMENSIONS" | cut -d',' -f1)
     PREVIOUS_HEIGHT=$(printf "$PREVIOUS_DIMENSIONS" | cut -d',' -f2)
     
-    #echo "w: $PREVIOUS_WIDTH | h: $PREVIOUS_HEIGHT"
+    echo "w: $PREVIOUS_WIDTH | h: $PREVIOUS_HEIGHT"
     
     SCALE_DIFF=""
     if (( $(echo "$PREVIOUS_HEIGHT > $PREVIOUS_WIDTH" | bc -l) )); then
@@ -38,12 +40,18 @@ function scaleAlignIconFile() {
         --export-plain-svg \
         --batch-process \
         --export-filename="$OUTPUT_FILEPATH" \
-        "$INPUT_FILEPATH"
+        "$INPUT_FILEPATH" \
+        || exit $?
+}
+
+function optimizeWithSVGO() {
+    svgo --multipass --config .svgo.yml "$OUTPUT_FILEPATH" || exit $?
 }
 
 function main() {
     computeScaleDifference
     scaleAlignIconFile
+    optimizeWithSVGO
 }
 
 main
