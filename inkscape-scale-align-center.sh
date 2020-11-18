@@ -23,7 +23,8 @@ function computeScaleDifference() {
     PREVIOUS_WIDTH=$(printf "$PREVIOUS_DIMENSIONS" | cut -d',' -f1)
     PREVIOUS_HEIGHT=$(printf "$PREVIOUS_DIMENSIONS" | cut -d',' -f2)
     
-    echo "w: $PREVIOUS_WIDTH | h: $PREVIOUS_HEIGHT"
+    echo "Previous width: $PREVIOUS_WIDTH"
+    echo "Previous height: $PREVIOUS_HEIGHT"
     
     SCALE_DIFF=""
     if (( $(echo "$PREVIOUS_HEIGHT > $PREVIOUS_WIDTH" | bc -l) )); then
@@ -45,7 +46,17 @@ function scaleAlignIconFile() {
 }
 
 function optimizeWithSVGO() {
-    svgo --multipass --config .svgo.yml "$OUTPUT_FILEPATH" || exit $?
+    printf "Optimizing '$OUTPUT_FILEPATH' with SVGO\n"
+    svgo --multipass --config .svgo.yml "$OUTPUT_FILEPATH" | grep Done || exit $?
+    
+    NEW_DIMENSIONS="$(
+        bash "$SELF_SCRIPT_DIR/inkscape-dimensions.sh" "$OUTPUT_FILEPATH" \
+        || exit $?)"
+    
+    NEW_WIDTH=$(printf "$NEW_DIMENSIONS" | cut -d',' -f1)
+    NEW_HEIGHT=$(printf "$NEW_DIMENSIONS" | cut -d',' -f2)
+    echo "New width: $NEW_WIDTH"
+    echo "New height: $NEW_HEIGHT"
 }
 
 function main() {

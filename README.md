@@ -26,5 +26,23 @@ bash utils/start-review.sh "<ICON NAME>" "<BRANCH USERNAME OWNER>" "<BRANCH NAME
 ### Scale icon to 24px size and align to center
 
 ```bash
-bash utils/inkscape-scale-align-center.sh "<PATH TO ICON>" "<PATH TO OUTPUT>" 
+bash utils/inkscape-scale-align-center.sh "<ICON PATH>" "<OUTPUT PATH>" 
+```
+
+### Open two icons for compare them manually
+
+```bash
+bash utils/inkscape-gui-compare.sh [-c] "<BLACK ICON PATH>" "<RED ICON PATH>"
+```
+
+### Query icon dimensions
+
+```bash
+bash utils/inkscape-dimensions.sh "<ICON PATH>"
+```
+
+## Print differences between icons
+
+```bash
+bash utils/diff.sh "<PREVIOUS ICON PATH>" "<NEXT ICON PATH>"
 ```
