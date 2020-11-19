@@ -29,6 +29,17 @@ function checkoutDevelopIfNotChecked() {
     fi;
 }
 
+function addRemoteIfNotAdded() {
+    CHECKED="$(git remote -v \
+        | grep -E "^$USERNAME" \
+        | head -n 1 \
+        | cut -d'(' -f2 \
+        | tr -d ')')"
+    if [ "$CHECKED" != "fetch" ]; then
+        git remote add "$USERNAME" "https://github.com/$USERNAME/simple-icons.git"
+    fi;
+}
+
 function fetchBranch() {
     git fetch $USERNAME $BRANCH || exit $?
 }
@@ -39,6 +50,7 @@ function checkoutTemporalBranch() {
 
 function main() {
     checkoutDevelopIfNotChecked
+    addRemoteIfNotAdded
     fetchBranch
     checkoutTemporalBranch
 }
