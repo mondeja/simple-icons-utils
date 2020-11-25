@@ -22,9 +22,26 @@ USERNAME="$2"
 BRANCH="$3"
 ORIGINAL_ICON_NAME="$4"
 
+if [ -z "$DIRNAME" ]; then
+    printf "You must specify a directory name where review files will be" >&2
+    printf " located as first argument.\n" >&2
+    exit 1
+fi;
+if [ -z "$USERNAME" ]; then
+    printf "You must specify a user from which will be fetched the branch" >&2
+    printf " to review as second argument.\n" >&2
+    exit 1
+fi;
+if [ -z "$BRANCH" ]; then
+    printf "You must specify a branch name to review as third argument.\n" >&2
+    exit 1
+fi;
+
+SELF_SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 function main() {
-    bash _review/create-review-dir.sh "$DIRNAME" "$ORIGINAL_ICON_NAME" || exit $?
-    bash _review/fetch.sh "$USERNAME" "$BRANCH" || exit $?
+    bash "$SELF_SCRIPT_DIR/create-review-dir.sh" "$DIRNAME" "$ORIGINAL_ICON_NAME" || exit $?
+    bash "$SELF_SCRIPT_DIR/fetch.sh" "$USERNAME" "$BRANCH" || exit $?
 }
 
 main
