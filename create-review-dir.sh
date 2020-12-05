@@ -43,8 +43,8 @@ function createOriginalIcon() {
             "$DIRNAME" "$ORIGINAL_ICON_NAME"
     else
         printf '<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title></title><path d=""/></svg>' \
-            > "_review/$DIRNAME/original.svg"
-        printf "Created empty icon '_review/%s/original.svg'\n" "$DIRNAME"
+            > "_review/$DIRNAME/empty.svg"
+        printf "Created empty icon '_review/%s/empty.svg'\n" "$DIRNAME"
     fi;
 }
 
