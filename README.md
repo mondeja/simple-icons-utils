@@ -64,7 +64,7 @@ This will create the directory `_review/twitter/` and will place the original
 Inkscape the following repetitive tasks are followed: block width/height scale
 factor, see what is the maximum axis size (width or height), adjust that size
 to 24px, go to `Object` -> `Align and distribute`, and center in both axis.
-This can be automatized by next command:
+This can be automated by next command:
 
 ```bash
 bash utils/inkscape-scale-align-center.sh _review/twitter/original.svg _review/twitter/autofixed.svg

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 : '
-  Fetchs a remote branch and creates a correspondent temporal branch
+  Fetches a remote branch and creates a correspondent temporal branch
   checking out to it.
   
   Arguments:

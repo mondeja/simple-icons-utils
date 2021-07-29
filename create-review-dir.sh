@@ -3,8 +3,8 @@
   Creates a directory for make a review. Passing a second argument or
   if the directory name match with an icon located at "icons" folder,
   copies the icon to the new directory renaming it as "original.svg".
-  If not matchs and not passed this second argument, the icon created
-  will be an empty icon.
+  If does not matches and this second argument is not passed, the
+  created icon will be an empty icon.
   
   Arguments:
   

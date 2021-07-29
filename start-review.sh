@@ -4,7 +4,7 @@
   Starts a review:
     - Creates a directory for the review.
     - Copies the original icon.
-    - Fetchs the branch and checkouts to it.
+    - Fetches the branch and checkouts to it.
 
   Arguments:
     1. Directory name for the review.
