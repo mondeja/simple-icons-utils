@@ -5,6 +5,11 @@
 
 EXITCODE=0
 
+SIMPLE_ICONS_PROJECTS="simple-icons
+simple-icons-font
+simple-icons-website
+release-action"
+
 # Get package.json dependencies and devDependencies
 # of a project.
 #
@@ -59,11 +64,14 @@ print_project_dependencies_table() {
   dependencies="$(get_project_packagejson_dependencies $repo_name)"
 
   printf "## $repo_name\n\n"
-  printf '| Dependency | Accepts Donations | Importance | Project Type|\n'
+  printf '| Dependency | Accepts Donations | Importance | Project Type |\n'
   printf '| --- | --- | --- | --- |\n'
 
   echo "$dependencies" | while read -r dep; do
-    printf "| [$dep](https://npmjs.com/package/$dep) |  |  |  |\n"
+    if [ "$(echo $SIMPLE_ICONS_PROJECTS | grep "$dep")" = "" ]; then
+      # don't print our own packages as dependencies
+      printf "| [$dep](https://npmjs.com/package/$dep) |  |  |  |\n"
+    fi
   done
   printf '\n'
 }
@@ -81,10 +89,9 @@ main() {
     exit $EXITCODE
   fi
 
-  print_project_dependencies_table simple-icons
-  print_project_dependencies_table simple-icons-font
-  print_project_dependencies_table simple-icons-website
-  print_project_dependencies_table release-action
+  echo "$SIMPLE_ICONS_PROJECTS" | while read -r project; do
+    print_project_dependencies_table "$project"
+  done
 }
 
 main
